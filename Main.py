@@ -5,18 +5,16 @@
   - Kelvin     - Fahrenheit     - Celcius      - Reamur
   - Rankine    - Delisle        - Newton       - Romer
 '''
+# =======================
 
-
-# Input user melalu terminal
+#* Input user melalu terminal
 skala_yang_dipilih = input("Masukkan skala awal (kelvin/fahrenheit/celcius/reamur/rankine/delisle/newton/romer):   ->   ").lower();
 nilai_suhu = float(input("Masukkan nilainya   ->   "));
 skala_yang_ingin_dikonversi = input("Masukkan skala yang ingin dikonversi (kelvin/fahrenheit/celcius/reamur/rankine/delisle/newton/romer):   ->   ").lower();
 
-
-
 # Function konversi skala suhu
 def konversi_skala_suhu(skala_yang_dipilih, nilai_suhu, skala_yang_ingin_dikonversi):
-  # * Mencari nilai konversi dari satuan Kelvin
+  # Mencari nilai konversi dari satuan Kelvin
   if skala_yang_dipilih == 'kelvin':
     if skala_yang_ingin_dikonversi == 'kelvin':
       return nilai_suhu;
@@ -38,7 +36,7 @@ def konversi_skala_suhu(skala_yang_dipilih, nilai_suhu, skala_yang_ingin_dikonve
       #! Jika salah memasukkan satuan skala suhu
       raise ValueError('Masukkan satuan sesuai dengan yang sudah tertera!');
 
-  # * Mencari nilai konversi dari satuan Fahrenheit
+  # Mencari nilai konversi dari satuan Fahrenheit
   elif skala_yang_dipilih == 'fahrenheit':
     if skala_yang_ingin_dikonversi == 'kelvin':
       return (nilai_suhu + 459.67) * 5/9;
@@ -60,7 +58,7 @@ def konversi_skala_suhu(skala_yang_dipilih, nilai_suhu, skala_yang_ingin_dikonve
       #! Jika salah memasukkan satuan skala suhu
       raise ValueError('Masukkan satuan sesuai dengan yang sudah tertera!');
 
-  # * Mencari nilai konversi dari satuan Celcius
+  # Mencari nilai konversi dari satuan Celcius
   elif skala_yang_dipilih == 'celcius':
     if skala_yang_ingin_dikonversi == 'kelvin':
       return nilai_suhu + 273.15;
@@ -82,7 +80,7 @@ def konversi_skala_suhu(skala_yang_dipilih, nilai_suhu, skala_yang_ingin_dikonve
       #! Jika salah memasukkan satuan skala suhu
       raise ValueError('Masukkan satuan sesuai dengan yang sudah tertera!');
 
-  # * Mencari nilai konversi dari satuan Reamur
+  # Mencari nilai konversi dari satuan Reamur
   elif skala_yang_dipilih == 'reamur':
     if skala_yang_ingin_dikonversi == 'kelvin':
       return nilai_suhu * 5/4 + 273.15;
@@ -104,7 +102,7 @@ def konversi_skala_suhu(skala_yang_dipilih, nilai_suhu, skala_yang_ingin_dikonve
       #! Jika salah memasukkan satuan skala suhu
       raise ValueError('Masukkan satuan sesuai dengan yang sudah tertera!');
       
-  # * Mencari nilai konversi dari satuan Rankine
+  # Mencari nilai konversi dari satuan Rankine
   elif skala_yang_dipilih == 'rankine':
     if skala_yang_ingin_dikonversi == 'kelvin':
       return nilai_suhu * 5/9;
@@ -126,7 +124,7 @@ def konversi_skala_suhu(skala_yang_dipilih, nilai_suhu, skala_yang_ingin_dikonve
       #! Jika salah memasukkan satuan skala suhu
       raise ValueError('Masukkan satuan sesuai dengan yang sudah tertera!');
   
-  # * Mencari nilai konversi dari satuan Delisle
+  # Mencari nilai konversi dari satuan Delisle
   elif skala_yang_dipilih == 'delisle':
     if skala_yang_ingin_dikonversi == 'kelvin':
       return 373.15 - nilai_suhu * 2/3;
@@ -148,7 +146,7 @@ def konversi_skala_suhu(skala_yang_dipilih, nilai_suhu, skala_yang_ingin_dikonve
       #! Jika salah memasukkan satuan skala suhu
       raise ValueError('Masukkan satuan sesuai dengan yang sudah tertera!');
 
-  # * Mencari nilai konversi dari satuan Newton
+  # Mencari nilai konversi dari satuan Newton
   elif skala_yang_dipilih == 'newton':
     if skala_yang_ingin_dikonversi == 'kelvin':
       return nilai_suhu * 100/33 + 273.15;
@@ -170,7 +168,7 @@ def konversi_skala_suhu(skala_yang_dipilih, nilai_suhu, skala_yang_ingin_dikonve
       #! Jika salah memasukkan satuan skala suhu
       raise ValueError('Masukkan satuan sesuai dengan yang sudah tertera!');
 
-# * Mencari nilai konversi dari satuan Romer
+# Mencari nilai konversi dari satuan Romer
   elif skala_yang_dipilih == 'romer':
     if skala_yang_ingin_dikonversi == 'kelvin':
       return (nilai_suhu - 7.5) * 40/21 + 273.15;
@@ -192,8 +190,12 @@ def konversi_skala_suhu(skala_yang_dipilih, nilai_suhu, skala_yang_ingin_dikonve
       #! Jika salah memasukkan satuan skala suhu
       raise ValueError('Masukkan satuan sesuai dengan yang sudah tertera!');
 
-# Hasil Konversi di proses kedalam variabel hasil_konversi
+#* Hasil Konversi di proses kedalam variabel hasil_konversi
 hasil_konversi = konversi_skala_suhu(skala_yang_dipilih, nilai_suhu, skala_yang_ingin_dikonversi);
 
 # Menampilkan hasil
-print(f"Hasil konversi dari {nilai_suhu} {skala_yang_dipilih} ke {skala_yang_ingin_dikonversi} adalah {hasil_konversi}");
+#! Akan memvalidasi, jika input nama skala bernilai sama
+if skala_yang_dipilih == skala_yang_ingin_dikonversi :
+  raise ValueError("Konversi tidak akan berlaku jika kedua nama skala suhu sama");
+else:
+  print(f"Hasil konversi dari {nilai_suhu} {skala_yang_dipilih} ke {skala_yang_ingin_dikonversi} adalah {hasil_konversi}");
