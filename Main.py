@@ -7,27 +7,44 @@
 '''
 # =======================
 
-satuan_skala = ['kelvin', 'fahrenheit', 'celcius', 'reamur', 'rankine', 'delisle', 'newton', 'romer'];
 
-#* Input user melalu terminal
-skala_yang_dipilih = input("\nPilih satuan yang ingin dikonversi:\n- kelvin\n- fahrenheit\n- celcius\n- reamur\n- rankine\n- delisle\n- newton\n- romer:\n\n==========\n\n-> ").strip();
-print('Kamu memilih: ', skala_yang_dipilih);
+# Daftar satuan skala suhu
+list_satuan_skala = ['kelvin', 'fahrenheit', 'celcius', 'reamur', 'rankine', 'delisle', 'newton', 'romer'];
+def daftar_satuan_skala():
+  for index, tampil_satuan_skala in enumerate(list_satuan_skala, start=1): #* menggunakan syntax enumerate(); ke variabel index, dan dimulai dari nomer 1
+    print(f"{index}. {tampil_satuan_skala}");
+
+print("\nNOTE : Pilih satuan menggunakan nomor yang terdaftar!\n");
+print("Pilih satuan awal untuk memasukkan nilai:\n");
+daftar_satuan_skala();
+print("\n\n==========");
+
+skala_yang_dipilih = int(input("\n\n-> "));
+skala_yang_dipilih = skala_yang_dipilih - 1;
+print(f'Kamu memilih: {list_satuan_skala[skala_yang_dipilih]}');
+
 nilai_suhu = float(input("\nMasukkan nilainya   ->   "));
-skala_yang_ingin_dikonversi = input("\nMasukkan skala yang ingin dikonversi \n- kelvin\n- fahrenheit\n- celcius\n- reamur\n- rankine\n- delisle\n- newton\n- romer:\n\n==========\n\n-> ").strip();
-print('Konversikan ke: ', skala_yang_ingin_dikonversi,)
+
+print("\nPilih konversi satuan yang ingin dicari:\n")
+daftar_satuan_skala();
+print("\n\n==========");
+
+skala_yang_ingin_dikonversi = int(input("\n\n-> "));
+skala_yang_ingin_dikonversi = skala_yang_ingin_dikonversi - 1;
+print(f'Konversikan ke: {list_satuan_skala[skala_yang_ingin_dikonversi]}')
 
 # Validasi input
-if skala_yang_dipilih not in satuan_skala or skala_yang_ingin_dikonversi not in satuan_skala:
-  #! Jika skala_yang_dipilih atau skala_yang_ingin_dikonversi tidak sesuai dengan satuan skala, maka:
+if skala_yang_dipilih not in list_satuan_skala and skala_yang_ingin_dikonversi not in list_satuan_skala:
+  #! Jika skala_yang_dipilih dan skala_yang_dikonversi tidak ada dalam daftar list_satuan_skala maka error ditampilkan
   raise ValueError('Satuan skala yang dimasukkan tidak valid. Harap masukkan dengan benar');
 
 # Function konversi skala suhu
 def konversi_skala_suhu(skala_yang_dipilih, nilai_suhu, skala_yang_ingin_dikonversi):
   # Mencari nilai konversi dari satuan Kelvin
-  if skala_yang_dipilih == 'kelvin':
-    if skala_yang_ingin_dikonversi == 'kelvin':
+  if skala_yang_dipilih == list_satuan_skala[0]:
+    if skala_yang_ingin_dikonversi == list_satuan_skala[0]:
       return nilai_suhu;
-    elif skala_yang_ingin_dikonversi == 'fahrenheit':
+    elif skala_yang_ingin_dikonversi == list_satuan_skala[1]:
       return nilai_suhu * 9/5 - 459.67;
     elif skala_yang_ingin_dikonversi == 'celcius':
       return nilai_suhu - 273.15;
