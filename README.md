@@ -13,3 +13,6 @@
 - Fixed bug on result didnt get the output
 - Cleaning code + added `libs/`
 - Another bug fixed
+
+### 📅 9/8/2024
+- Validate input if user choose the same temperature unit of input
