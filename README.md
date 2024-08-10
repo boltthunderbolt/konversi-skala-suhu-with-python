@@ -16,3 +16,7 @@
 
 ### 📅 9/8/2024
 - Validate input if user choose the same temperature unit of input
+
+### 📅 10/8/2024
+- Added menu exit program in `Main.py`
+- Deleted return the same unit value in `libs/temperatureUnit.py`
